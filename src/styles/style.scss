@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@mixin sans-serif {
+    font-family: 'Roboto';
+    color: white;
+    text-align: center
+}
+
+main {
+    @include sans-serif;
+}
+
+input {
+    margin: 10px;
+    font-family: 'Roboto';
+    font-size: 18px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #1B1F25;
+    color: #879BC5;
+    background-color: #0F1319;
+    padding: 10px;
+}
+
+input:focus {
+    border: 1px solid #1B1F25;
+}
+
+input[type=button] {
+    border-radius: 50px;
+    padding: 15px;
+}
+
+input[type=button]:hover {
+    cursor: pointer;
+    background-color: #5288F1;
+    color: #ECF2FE;
+}
+
+input::placeholder {
+    color: #879BC5;
+}
+
+select {
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-family: 'Roboto';
+    font-size: 18px;
+    border: 1px solid #1B1F25;
+    background-color: #0F1319;
+    padding: 10px;
+    color: #879BC5;
+}
+
+select:hover {
+    cursor: pointer;
+}
+
+.credits {
+    font-style: italic;
+}
+
+a {
+    text-decoration: none;
+    color: #5C85D6;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#lastuntilform {
+    display: none;
+}
+
+hr {
+    border: 1px solid #1B1F25;
+}
