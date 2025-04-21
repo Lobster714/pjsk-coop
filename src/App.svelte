@@ -13,21 +13,39 @@
         document.body.removeChild(elem);
     }
 
+    function sanitizeNumberInput(input: string): number {
+        if (!input) {
+            return 0;
+        } else {
+            return parseInt(input.replace(/\D+|\s+/g, ''));
+        }
+    }
+
+    function addNewLineToString(originalString: string, addition: string): string {
+        if (!originalString) {
+            return addition;
+        } else {
+            return originalString + "<br>" + addition;
+        }
+    }
+
     function generateOutput() {
         // Declare constants
-        const leaderScore = parseInt((<HTMLInputElement>document.getElementById("leader")).value);
+        const leaderScore = sanitizeNumberInput((<HTMLInputElement>document.getElementById("leader")).value);
         const sfPreference = (<HTMLInputElement>document.getElementById("sfpreference")).value;
-        const peopleWanted = (<HTMLInputElement>document.getElementById("peoplewanted")).value;
-        const numRounds = (<HTMLInputElement>document.getElementById("numrounds")).value;
-        const lastUntil = (<HTMLInputElement>document.getElementById("lastuntil")).value;
+        const peopleWanted = sanitizeNumberInput((<HTMLInputElement>document.getElementById("peoplewanted")).value);
+        const numRounds = sanitizeNumberInput((<HTMLInputElement>document.getElementById("numrounds")).value);
+        const lastUntil = sanitizeNumberInput((<HTMLInputElement>document.getElementById("lastuntil")).value);
         const durationType = (<HTMLInputElement>document.getElementById("durationtype")).value;
         const isVeteranRoom = (<HTMLInputElement>document.getElementById("veteran")).checked;
-        const roomCode = (<HTMLInputElement>document.getElementById("code")).value;
+        const roomCode = sanitizeNumberInput((<HTMLInputElement>document.getElementById("code")).value);
         const isWaiting = (<HTMLInputElement>document.getElementById("gather")).checked;
         const isStrict = (<HTMLInputElement>document.getElementById("strict")).checked;
         const songPreference = (<HTMLInputElement>document.getElementById("tiersong")).value;
 
         // Declare variables
+        let inputError = "";
+        let peopleWantedSection = "";
         let memberScoreTotal = 0;
         let scoreBoost = 0;
         let desiredScoreBoost = 0;
@@ -35,7 +53,7 @@
 
         // Math
         document.querySelectorAll(".pmember").forEach(element => {
-            memberScoreTotal += parseInt((<HTMLInputElement>element).value);
+            memberScoreTotal += sanitizeNumberInput((<HTMLInputElement>element).value);
         });
 
         scoreBoost = leaderScore + (memberScoreTotal * 0.2);
@@ -64,7 +82,9 @@
 
         let durationSection = "";
         if (durationType == "numroundstype") {
-            if (numRounds == "0") {
+            if (numRounds < 0) {
+                inputError = addNewLineToString(inputError, "Error! Number of rounds cannot go below 0!");
+            } else if (numRounds == 0) {
                 durationSection = "周回";
             } else {
                 durationSection = `${numRounds}回`;
@@ -73,7 +93,13 @@
             durationSection = `${lastUntil}時まで`;
         }
 
-        let peopleWantedSection = `@${peopleWanted}`;
+        if (peopleWanted < 1) {
+            inputError = addNewLineToString(inputError, "Error! Number of people wanted cannot go below 1!");
+        } else if (peopleWanted > 4) {
+            inputError = addNewLineToString(inputError, "Error! Number of people wanted cannot go above 4!")
+        } else {
+            peopleWantedSection = `@${peopleWanted}`;
+        }
 
         let roomCodeSection = `🗝️: ${roomCode}`;
 
@@ -103,10 +129,15 @@
         if (isStrict) {
             strictSection = "<br>条件違い解散します";
         }
-
         // End of post sections
 
-        output!.innerHTML = `${veteranSection}${songSection}${durationSection}<br>${peopleWantedSection}<br><br>${roomCodeSection}<br>${scoreBoostSection}<br><br>${sfSection}${waitSection}${strictSection}<br>#プロセカ募集 #プロセカ協力`
+        if (!inputError) {
+            output!.style.color = "white";
+            output!.innerHTML = `${veteranSection}${songSection}${durationSection}<br>${peopleWantedSection}<br><br>${roomCodeSection}<br>${scoreBoostSection}<br><br>${sfSection}${waitSection}${strictSection}<br>#プロセカ募集 #プロセカ協力`;
+        } else {
+            output!.style.color = "red";
+            output!.innerHTML = inputError;
+        }
     }
 
     function changeDurationType() {
