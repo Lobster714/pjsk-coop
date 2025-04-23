@@ -73,6 +73,27 @@ a:hover {
     display: none;
 }
 
+#customminform {
+    display: none;
+}
+
 hr {
     border: 1px solid #1B1F25;
+}
+
+.button {
+    font-size: 30px;
+    margin-bottom: 20px;
+    border-radius: 50px;
+    border: 1px solid #1B1F25;
+    color: #879BC5;
+    background-color: #0F1319;
+    padding: 15px;
+}
+
+.button:hover {
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #5288F1;
+    color: #ECF2FE;
 }

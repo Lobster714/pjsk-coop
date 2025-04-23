@@ -31,6 +31,8 @@
 
     function generateOutput() {
         // Declare constants
+        const isCustomISV = (<HTMLInputElement>document.getElementById("custommin")).checked;
+        const customMinISV = sanitizeNumberInput((<HTMLInputElement>document.getElementById("customisv")).value);
         const leaderScore = sanitizeNumberInput((<HTMLInputElement>document.getElementById("leader")).value);
         const sfPreference = (<HTMLInputElement>document.getElementById("sfpreference")).value;
         const peopleWanted = sanitizeNumberInput((<HTMLInputElement>document.getElementById("peoplewanted")).value);
@@ -57,7 +59,12 @@
         });
 
         scoreBoost = leaderScore + (memberScoreTotal * 0.2);
-        desiredScoreBoost = Math.floor(scoreBoost/10)*10;
+
+        if (isCustomISV) {
+            desiredScoreBoost = customMinISV;
+        } else {
+            desiredScoreBoost = Math.floor(scoreBoost/10)*10;
+        }
 
         // Sections of the post
         let veteranSection = "";
@@ -153,6 +160,17 @@
             lastUntilForm!.style.display = "block";
         }
     }
+
+    function customMinimumISV() {
+        const customCheck = document.getElementById("custommin");
+        const customMinForm = document.getElementById("customminform");
+
+        if ((<HTMLInputElement>customCheck)!.checked) {
+            customMinForm!.style.display = "block";
+        } else {
+            customMinForm!.style.display = "none";
+        }
+    }
 </script>
 
 <main>
@@ -215,6 +233,16 @@
     </div>
 
     <div>
+        <label for="custommin">Do you want to set a custom minimum ISV?</label>
+        <input type="checkbox" name="custommin" id="custommin" on:change={customMinimumISV}>
+    </div>
+
+    <div id="customminform">
+        <label for="customisv">Enter in your custom minimum ISV</label>
+        <input type="text" id="customisv">
+    </div>
+
+    <div>
         <label for="sfpreference">Super fever preference</label>
         <select id="sfpreference">
             <option value="sfdontcare">Don't care about SF</option>
@@ -240,6 +268,7 @@
     <p id="output">Output will go here!</p>
 
     <input type="button" value="Copy to clipboard" on:click="{copyOutput}">
+    <a href="https://github.com/Lobster714/pjsk-coop" target="_blank" class="button fa-brands fa-github" aria-label="a"></a>
 </main>
 
 <style lang="scss">
