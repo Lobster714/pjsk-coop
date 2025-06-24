@@ -176,7 +176,7 @@
 <main>
     <h1>PJSK Co-op Post Builder</h1>
 
-    <p class="credits">Programmed by <a href="https://twitter.com/whimsicalairi" target="_blank">@whimsicalairi</a></p>
+    <p class="credits">Programmed by <a href="https://twitter.com/momonikaze" target="_blank">@momonikaze</a></p>
     <p class="credits">Massive thanks to <a href="https://twitter.com/starloid_" target="_blank">@starloid_</a> for all the help!</p>
 
     <hr>
