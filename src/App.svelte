@@ -205,7 +205,7 @@
     <div>
         <label for="tiersong">Pick your preferred song</label>
         <select id="tiersong">
-            <option value="other">Omakase (Random)</option>
+            <option value="random">Omakase (Random)</option>
             <option value="shrimp">Hitorinbo Envy</option>
             <option value="lnf">Lost and Found</option>
             <option value="sage">Sage</option>
