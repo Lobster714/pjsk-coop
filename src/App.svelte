@@ -74,7 +74,7 @@
 
         let songSection = "";
         switch (songPreference) {
-            case "other":
+            case "random":
                 songSection = "おまかせ";
                 break;
             case "shrimp":
@@ -83,6 +83,16 @@
             case "lnf":
                 songSection = "ロスエン";
                 break;
+            case "sage":
+                songSection = "Sage"
+            case "vh":
+                songSection = "ビバハピ"
+            case "melt":
+                songSection = "メルト"
+            case "kms":
+                songSection = "君色"
+            case "ycc": // You can choose
+                songSection = "選曲◎"
             default:
                 break;
         }
@@ -176,8 +186,9 @@
 <main>
     <h1>PJSK Co-op Post Builder</h1>
 
-    <p class="credits">Programmed by <a href="https://twitter.com/momonikaze" target="_blank">@momonikaze</a></p>
-    <p class="credits">Massive thanks to <a href="https://twitter.com/starloid_" target="_blank">@starloid_</a> for all the help!</p>
+    <p class="credits">Programmed by <a href="https://twitter.com/starryeyedairi" target="_blank">@starryeyedairi</a></p>
+    <p class="credits">Credits to the <a href="https://docs.google.com/document/d/1DlXZE25x0IwFiuNsLpXPdazt5miucMWUaXvMEIxuC34/edit?tab=t.0" target="_blank">The Twitter Room Handbook</a></p>
+    <!-- <p class="credits">Massive thanks to <a href="https://twitter.com/starloid_" target="_blank">@starloid_</a> for all the help!</p> -->
 
     <hr>
 
@@ -189,9 +200,14 @@
     <div>
         <label for="tiersong">Pick your preferred song</label>
         <select id="tiersong">
-            <option value="other">Other / おまかせ</option>
+            <option value="other">Omakase (Random)</option>
             <option value="shrimp">Hitorinbo Envy</option>
             <option value="lnf">Lost and Found</option>
+            <option value="sage">Sage</option>
+            <option value="vh">Viva Happy</option>
+            <option value="melt">Melt</option>
+            <option value="kms">Kimiiro Marine Snow</option>
+            <option value="ycc">You can choose the songs you want</option>
         </select>
     </div>
 
