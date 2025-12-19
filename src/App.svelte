@@ -85,14 +85,19 @@
                 break;
             case "sage":
                 songSection = "Sage"
+                break;
             case "vh":
                 songSection = "ビバハピ"
+                break;
             case "melt":
                 songSection = "メルト"
+                break;
             case "kms":
                 songSection = "君色"
+                break;
             case "ycc": // You can choose
                 songSection = "選曲◎"
+                break;
             default:
                 break;
         }
