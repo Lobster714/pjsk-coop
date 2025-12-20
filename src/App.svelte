@@ -192,7 +192,7 @@
     <h1>PJSK Co-op Post Builder</h1>
 
     <p class="credits">Programmed by <a href="https://twitter.com/starryeyedairi" target="_blank">@starryeyedairi</a></p>
-    <p class="credits">Credits to the <a href="https://docs.google.com/document/d/1DlXZE25x0IwFiuNsLpXPdazt5miucMWUaXvMEIxuC34/edit?tab=t.0" target="_blank">The Twitter Room Handbook</a></p>
+    <p class="credits">Credits to <a href="https://docs.google.com/document/d/1DlXZE25x0IwFiuNsLpXPdazt5miucMWUaXvMEIxuC34/edit?tab=t.0" target="_blank">The Twitter Room Handbook</a></p>
     <!-- <p class="credits">Massive thanks to <a href="https://twitter.com/starloid_" target="_blank">@starloid_</a> for all the help!</p> -->
 
     <hr>
